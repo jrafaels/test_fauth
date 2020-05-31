@@ -1,0 +1,186 @@
+FORMAT: 1A
+HOST: http://localhost:3000/api/
+
+# FFAuth
+
+Authentication API Documentation for FireFly plataform.
+
+# Allowed HTTPs requests:
+<pre>
+POST    : To create resource 
+PUT     : Update resource
+GET     : Get a resource or list of resources
+DELETE  : To delete resource
+</pre>
+
+# Description Of Usual Server Responses:
+- 200 `OK` - the request was successful (some API calls may return 201 instead).
+- 201 `Created` - the request was successful and a resource was created.
+- 204 `No Content` - the request was successful but there is no representation to return (i.e. the response is empty).
+- 400 `Bad Request` - the request could not be understood or was missing required parameters.
+- 401 `Unauthorized` - authentication failed or user doesn't have permissions for requested operation.
+- 403 `Forbidden` - access denied.
+- 404 `Not Found` - resource was not found.
+- 405 `Method Not Allowed` - requested method is not supported for resource.
+
+
+
+
+## Authentication [/auth]
+Represents authentication details.
+
+---
+**User attributes:**
+
+- user_id `(Number)` : unique identifier. 
+- first_name `(String)` : First Name.
+- last_name `(String)` : Last Name.
+- email `(String)` : email id of the user.
+- verified_email `(String)` : is email verified?
+- country `(String)` : Country.
+- city `(String)` : City.
+- birth_date `(Date)` : Birth date of user.
+
+**Password attributes**
+- password `(String)` : password of user
+
+**Log attributes**
+- ip `(String)` : IP of user
+---
+
+### Sign up [POST/auth/signup]
+
+You may create a new user. It takes a JSON
+object containing user information, password and log data.
+Optional fields: country, city, birth_date.
+
++ Request (application/json)
+
+        {
+            "user": {
+                "first_name": "José",
+                "last_name": "Couves",
+                "email": "jose@couves.com",
+                "country": "Portugal",
+                "city": "Lisboa",
+                "birth_date": "01-01-2000"
+            },
+            "password": {
+                "password": "1234567890"
+            },
+            "log": {
+                "ip": "127.0.0.1"
+            }
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "user_id": 1,
+                "email": "filipe@morgado.com",
+                "first_name": "Filipe",
+                "last_name": "Morgado",
+                "country": "Portugal",
+                "city": "Lisboa",
+                "verified_email": "F",
+                "birth_date": "2000-01-01T00:00:00.000Z",
+                "updatedAt": "2020-03-23T22:56:33.616Z",
+                "createdAt": "2020-03-23T22:56:33.616Z"
+            }
+            
++ Response 400 (application/json)
+    
+    + Body
+    
+            {
+                "error": {
+                    "last_name": [
+                        "Last name can't be blank"
+                    ],
+                    "email": [
+                        "Email can't be blank"
+                    ]
+                }
+            }
+        
+
+
+### Login [POST/auth/login]
+
+To login on platform.
+
++ Request (application/json)
+
+        {
+           "email": "filipe@morgado.com",
+           "password": "1234567890",
+           "ip": "127.0.0.1"
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "accessToken": "eyJhbGciOiJIUzI3tIYnT0r-K9hOWkh8",
+                "user": {
+                    "id": 1,
+                    "email": "filipe@morgado.com"
+                }
+            }
+            
++ Response 401 (text/plain)
+
+    + Body
+
+            Unauthorized
+            
+### Logout [GET/auth/logout]
+
+To logout on platform.
+
++ Request (application/json)
+
+        {
+           "user_id": 1,
+           "ip": "127.0.0.1"
+        }
+
++ Response 201 (application/json)
+
+
+### Request Password [POST/auth/recover]
+
+To request a new password. A link will be sent to email to finish
+the recovery.
+
++ Request (application/json)
+
+        {
+           "email": "filipe@morgado.com",
+           "ip": "127.0.0.1"
+        }
+
++ Response 200 (application/json)
+
++ Response 404 (application/json)
+
+
+### Set new Password [POST/auth/recovered]
+
+To define new password after request recovery.
+
++ Request (application/json)
+
+        {
+            "password": "9876543210",
+            "controlPassword": "5dc64dcfb052ed76hfdhdrh48f1f7a59",
+            "ip": "127.0.0.1"
+        }
+
++ Response 200 (application/json)
+
++ Response 404 (application/json)
+

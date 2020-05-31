@@ -1,0 +1,21 @@
+DELETE http://localhost:8083/api/user/1
+Accept: application/json
+
+###
+PUT http://localhost:8083/api/user/1
+Content-Type: application/json
+
+{
+    "user_id": 5,
+    "last_name": "Manel"
+}
+
+###
+GET http://localhost:8083/api/user/1
+Accept: application/json
+
+###
+GET http://localhost:8083/api/user
+Accept: application/json
+
+###

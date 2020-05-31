@@ -1,0 +1,39 @@
+POST http://localhost:8083/api/auth/signup
+Content-Type: application/json
+
+{
+    "user": {
+        "first_name": "João",
+        "last_name": "Santos",
+        "email": "mario@corona.com"
+    },
+    "password": "1234567890oiu"
+}
+
+###
+POST http://localhost:8083/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "mario@corona.com",
+    "password": "1234567890oiu"
+}
+
+###
+POST http://localhost:8083/api/auth/recover
+Content-Type: application/json
+
+{
+    "email": "mario@corona.com",
+}
+
+###
+POST http://localhost:8083/api/auth/reset
+Content-Type: application/json
+
+{
+    "password": "9876543210",
+    "controlPassword": "233ff1cca5fc507c043a36c70c10c020",
+}
+
+###

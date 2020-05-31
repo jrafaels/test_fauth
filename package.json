@@ -1,0 +1,80 @@
+{
+  "name": "test_fauth",
+  "version": "0.0.2",
+  "description": "This project consists of the authentication service of the FF platform. \r It is responsible for managing users and granting access to the various services \r available on the platform.",
+  "main": "app.js",
+  "directories": {
+    "test": "src/__tests__"
+  },
+  "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/chai": "^4.2.11",
+    "@types/cookie-parser": "^1.4.2",
+    "@types/country-list": "^2.1.0",
+    "@types/express": "^4.17.6",
+    "@types/express-session": "^1.17.0",
+    "@types/jest": "^25.2.3",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/md5": "^2.2.0",
+    "@types/morgan": "^1.9.0",
+    "@types/sequelize": "^4.28.9",
+    "@types/validator": "^13.0.0",
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "country-list": "^2.2.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.5.0",
+    "install": "^0.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "log4js": "^6.3.0",
+    "md5": "^2.2.1",
+    "moment": "^2.26.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.4",
+    "nyc": "^15.0.1",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "pug": "^2.0.4",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^5.21.10",
+    "sequelize-typescript": "^1.1.0",
+    "ts-jest": "^26.0.0",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.9.3",
+    "validate.js": "^0.13.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "eslint": "^7.1.0",
+    "jest": "^26.0.1",
+    "rimraf": "^3.0.2"
+  },
+  "scripts": {
+    "clean": "rimraf dist logs coverage",
+    "build": "rimraf dist && tsc",
+    "start": "SET NODE_ENV=production&&node dist/index.js",
+    "test": "SET NODE_ENV=test& jest -i --coverage --verbose",
+    "lint": "eslint . --ext .ts,.tsx",
+    "dev": "SET NODE_ENV=development&& tsc && ts-node-dev --respawn --transpileOnly src/index.ts"
+  },
+  "author": "Jorge Rafael Santos",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrafaels/test_fauth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jrafaels/test_fauth/issues"
+  },
+  "homepage": "https://github.com/jrafaels/test_fauth#readme"
+}

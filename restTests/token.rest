@@ -1,0 +1,8 @@
+POST http://localhost:8083/api/token
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6Im1hcmlvQGNvcm9uYS5jb20iLCJpcCI6Ijo6ZmZmZjoxMjcuMC4wLjEiLCJpYXQiOjE1ODk4MzEyODksImV4cCI6MTU4OTkxNzY4OX0.QwYNfXRadketNnC6_1JxoTNgsH9Ir6WsYsOMltZt-dijzG88Sx8X_um4pqEVflY4qFfmDfQyINhEdXnDoT14L0rAJHPONYGAVtm7sF1TNtYEGHqHLX1fYQUuzSBDObWROs1IKmYqWrF_FxNieOKWT20hLHDQX108q3asGAe-Yg4"
+}
+
+###
